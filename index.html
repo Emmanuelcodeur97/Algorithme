@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithme</title>
+</head>
+<body>
+
+    <script>
+
+function analyzeSentence(sentence) {
+    // Initialize counters
+    let sentenceLength = 0;
+    let wordCount = 0;
+    let vowelCount = 0;
+
+    // Iterate through each character of the sentence
+    for (let i = 0; i < sentence.length; i++) {
+        // Increment the sentence length counter
+        sentenceLength++;
+
+        // Check if the current character is a space or the last character (point)
+        if (sentence[i] === ' ' || sentence[i] === '.') {
+            // Increment the word count counter if it's not a consecutive space
+            if (i > 0 && sentence[i - 1] !== ' ') {
+                wordCount++;
+            }
+        }
+
+        // Check if the current character is a vowel (case-insensitive)
+        if ('aeiouAEIOU'.includes(sentence[i])) {
+            vowelCount++;
+        }
+    }
+
+    // Return the results
+    return {
+        sentenceLength: sentenceLength,
+        wordCount: wordCount,
+        vowelCount: vowelCount
+    };
+}
+
+// Example usage:
+const sentence = "This is a sample sentence.";
+const analysis = analyzeSentence(sentence);
+console.log("Length of the sentence:", analysis.sentenceLength);
+console.log("Number of words in the sentence:", analysis.wordCount);
+console.log("Number of vowels in the sentence:", analysis.vowelCount);
+
+    </script>
+    
+</body>
+</html>
